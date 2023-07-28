@@ -11,6 +11,9 @@
 		FA7D91ED2A719C840034DAB6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7D91EC2A719C840034DAB6 /* ContentView.swift */; };
 		FA7D91EF2A719C880034DAB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA7D91EE2A719C880034DAB6 /* Assets.xcassets */; };
 		FA7D91F22A719C880034DAB6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA7D91F12A719C880034DAB6 /* Preview Assets.xcassets */; };
+		FA96148F2A729CBD00EF4609 /* OnBoardig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA96148E2A729CBD00EF4609 /* OnBoardig.swift */; };
+		FA9614932A72A07F00EF4609 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA9614912A72A07E00EF4609 /* Roboto-Medium.ttf */; };
+		FA9614942A72A07F00EF4609 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA9614922A72A07F00EF4609 /* Roboto-Bold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +22,10 @@
 		FA7D91EC2A719C840034DAB6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FA7D91EE2A719C880034DAB6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA7D91F12A719C880034DAB6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		FA96148E2A729CBD00EF4609 /* OnBoardig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardig.swift; sourceTree = "<group>"; };
+		FA9614912A72A07E00EF4609 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		FA9614922A72A07F00EF4609 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		FA9614952A72A32C00EF4609 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +58,9 @@
 		FA7D91E92A719C840034DAB6 /* FoodDelivery */ = {
 			isa = PBXGroup;
 			children = (
+				FA9614952A72A32C00EF4609 /* Info.plist */,
+				FA9614902A729EF600EF4609 /* Fonts */,
+				FA96148A2A729C1B00EF4609 /* View */,
 				FA7D91EA2A719C840034DAB6 /* FoodDeliveryApp.swift */,
 				FA7D91EC2A719C840034DAB6 /* ContentView.swift */,
 				FA7D91EE2A719C880034DAB6 /* Assets.xcassets */,
@@ -65,6 +75,23 @@
 				FA7D91F12A719C880034DAB6 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		FA96148A2A729C1B00EF4609 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FA96148E2A729CBD00EF4609 /* OnBoardig.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FA9614902A729EF600EF4609 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				FA9614922A72A07F00EF4609 /* Roboto-Bold.ttf */,
+				FA9614912A72A07E00EF4609 /* Roboto-Medium.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,6 +154,8 @@
 			files = (
 				FA7D91F22A719C880034DAB6 /* Preview Assets.xcassets in Resources */,
 				FA7D91EF2A719C880034DAB6 /* Assets.xcassets in Resources */,
+				FA9614942A72A07F00EF4609 /* Roboto-Bold.ttf in Resources */,
+				FA9614932A72A07F00EF4609 /* Roboto-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,6 +166,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA96148F2A729CBD00EF4609 /* OnBoardig.swift in Sources */,
 				FA7D91ED2A719C840034DAB6 /* ContentView.swift in Sources */,
 				FA7D91EB2A719C840034DAB6 /* FoodDeliveryApp.swift in Sources */,
 			);
@@ -270,6 +300,8 @@
 				DEVELOPMENT_TEAM = UM9F85RKC2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FoodDelivery/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -299,6 +331,8 @@
 				DEVELOPMENT_TEAM = UM9F85RKC2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FoodDelivery/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
