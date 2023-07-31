@@ -9,20 +9,24 @@ import SwiftUI
 let customFontBold = "Roboto-Bold"
 let customFontRegular = "Roboto-Medium"
 
-struct OnBoardig: View {
+struct OnBoardigPage: View {
+    // Showing Login page..
+    @State var showLoginPage: Bool = false
     var body: some View {
         VStack(alignment: .leading) {
             Text("Find your\nFood")
-                .font(.custom(customFontRegular, size: 55))
+                .font(.custom(customFontRegular, size: 55).bold())
                 .foregroundColor(.white)
-                .fontWeight(.bold)
+                .padding()
 
 //            Image("onBoarding")
 //                .resizable()
 //                .aspectRatio(contentMode: .fit)
 
             Button {
-                //
+                withAnimation {
+                    showLoginPage = true
+                }
             } label: {
                 Text("Get started")
                     .font(.custom(customFontRegular, size: 18))
@@ -45,12 +49,20 @@ struct OnBoardig: View {
 
                 Color("myColor")
             )
+            .overlay(
+                Group {
+                    if showLoginPage{
+                        LoginPage()
+                            .transition(.move(edge: .bottom))
+                    }
+                }
+            )
         }
     }
 
 struct OnBoardig_Previews: PreviewProvider {
     static var previews: some View {
-        OnBoardig()
+        OnBoardigPage()
     }
 }
 
