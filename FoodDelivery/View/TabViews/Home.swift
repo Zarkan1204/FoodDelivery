@@ -57,17 +57,55 @@ struct Home: View {
                 
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 25) {
-                        ForEach(homeData.products) { product in
+                        
+                        ForEach(homeData.filteredProducts) { product in
                             
                             // Product Card View..
+                            ProductCardView(product: product)
                         }
                     }
+                    .padding(.horizontal, 25)
                 }
+                .padding(.top, 30)
+                
+                
             }
             .padding(.vertical)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color("HomeBG"))
+        // Updating data whenever tab changes..
+        .onChange(of: homeData.productType) { newValue in
+            homeData.filterProductByType()
+        }
+    }
+    
+    @ViewBuilder
+    func ProductCardView(product: Product) -> some View {
+        VStack(spacing: 10) {
+            Image(product.productImage)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: getRect().width / 2.5, height: getRect().width / 2.5)
+        
+            Text(product.title)
+                .font(.custom(customFontRegular, size: 18))
+                .fontWeight(.semibold)
+                .padding(.top, 5)
+            
+            Text(product.prise)
+                .font(.custom(customFontRegular, size: 16))
+                .fontWeight(.bold)
+                .foregroundColor(Color("LoginCircle"))
+                .padding(.top, 5)
+        }
+        .padding(.horizontal, 20)
+        .padding(.bottom, 22)
+        .background(
+        
+            Color.white
+                .cornerRadius(25)
+        )
     }
     
     @ViewBuilder
