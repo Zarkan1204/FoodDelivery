@@ -68,7 +68,27 @@ struct Home: View {
                 }
                 .padding(.top, 30)
                 
+                // See More Button ..
+                // This button will show all products on the current product type ..
+                //Since here were showing only 4 ..
                 
+                Button {
+                    homeData.showMoreProductsOnType.toggle()
+                } label: {
+                    // Since we need image ar right ..
+                    Label {
+                        Image(systemName: "arrow.right")
+                            .foregroundColor(Color("LoginCircle"))
+                    } icon: {
+                        Text("see more")
+                            .font(.custom(customFontRegular, size: 15).bold())
+                            .foregroundColor(Color("LoginCircle"))
+                    }
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+                    .padding(.trailing)
+                    .padding(.top, 10)
+                }
+
             }
             .padding(.vertical)
         }
@@ -77,6 +97,12 @@ struct Home: View {
         // Updating data whenever tab changes..
         .onChange(of: homeData.productType) { newValue in
             homeData.filterProductByType()
+        }
+        // Preview Issue
+        .sheet(isPresented: $homeData.showMoreProductsOnType) {
+            
+        } content: {
+            MoreProductsView()
         }
     }
     

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA7527792A8CEAB400BE34AF /* MoreProductsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7527782A8CEAB300BE34AF /* MoreProductsView.swift */; };
 		FA7D91EB2A719C840034DAB6 /* FoodDeliveryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7D91EA2A719C840034DAB6 /* FoodDeliveryApp.swift */; };
 		FA7D91ED2A719C840034DAB6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7D91EC2A719C840034DAB6 /* ContentView.swift */; };
 		FA7D91EF2A719C880034DAB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA7D91EE2A719C880034DAB6 /* Assets.xcassets */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA7527782A8CEAB300BE34AF /* MoreProductsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreProductsView.swift; sourceTree = "<group>"; };
 		FA7D91E72A719C840034DAB6 /* FoodDelivery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodDelivery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA7D91EA2A719C840034DAB6 /* FoodDeliveryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDeliveryApp.swift; sourceTree = "<group>"; };
 		FA7D91EC2A719C840034DAB6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 				FA9614962A77DD3000EF4609 /* LoginPage.swift */,
 				FA96149B2A77E18700EF4609 /* CustomCorners.swift */,
 				FA96149D2A7BC0B900EF4609 /* MainPage.swift */,
+				FA7527782A8CEAB300BE34AF /* MoreProductsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -212,6 +215,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA9614972A77DD3000EF4609 /* LoginPage.swift in Sources */,
+				FA7527792A8CEAB400BE34AF /* MoreProductsView.swift in Sources */,
 				FA96149C2A77E18700EF4609 /* CustomCorners.swift in Sources */,
 				FA9614A42A822A4700EF4609 /* Product.swift in Sources */,
 				FA9614A62A822EA200EF4609 /* HomeViewModel.swift in Sources */,
