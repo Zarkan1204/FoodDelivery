@@ -14,24 +14,23 @@ struct Home: View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack(spacing: 15) {
                 // Serch Bar..
-                HStack(spacing: 15) {
-                    Image(systemName: "magnifyingglass")
-                        .font(.title2)
-                        .foregroundColor(.gray)
-                    
-                    // Since we need a separate view for search bar..
-                    TextField("Search", text: .constant(""))
-                        .disabled(true)
+                ZStack {
+                    if homeData.searchActivated{
+                        SearchBar()
+                    }
+                    else {
+                        SearchBar()
+                            .matchedGeometryEffect(id: "SEARCHBAR", in: animation)
+                    }
                 }
-                .padding(.vertical, 12)
-                .padding(.horizontal)
-                .background(
-                    
-                    Capsule()
-                        .strokeBorder(Color.gray, lineWidth: 0.8)
-                )
                 .frame(width: getRect().width / 1.6)
                 .padding(.horizontal, 25)
+                .contentShape(Rectangle())
+                .onTapGesture {
+                    withAnimation(.easeInOut) {
+                        homeData.searchActivated = true
+                    }
+                }
                 
                 Text("Order online\ncollect in store")
                     .font(.custom(customFontRegular, size: 28).bold())
@@ -104,6 +103,37 @@ struct Home: View {
         } content: {
             MoreProductsView()
         }
+        // Displaying Search View..
+        .overlay(
+            ZStack{
+                if homeData.searchActivated{
+                    SearchView(animation: animation)
+                        .environmentObject(homeData)
+                }
+            }
+        )
+    }
+    
+    // Since we're adding matched geometry effect..
+    //avoiding code replication..
+    @ViewBuilder
+    func SearchBar() -> some View {
+        HStack(spacing: 15) {
+            Image(systemName: "magnifyingglass")
+                .font(.title2)
+                .foregroundColor(.gray)
+            
+            // Since we need a separate view for search bar..
+            TextField("Search", text: .constant(""))
+                .disabled(true)
+        }
+        .padding(.vertical, 12)
+        .padding(.horizontal)
+        .background(
+            
+            Capsule()
+                .strokeBorder(Color.gray, lineWidth: 0.8)
+        )
     }
     
     @ViewBuilder
