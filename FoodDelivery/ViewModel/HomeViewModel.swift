@@ -34,7 +34,12 @@ class HomeViewModel: ObservableObject {
         Product(type: .Burgers, title: "sdcsdcsd", prise: "$8", productImage: "fishburger"),
         Product(type: .Burgers, title: "sdcsdcsd", prise: "$10", productImage: "royalburger"),
         
-        
+        Product(type: .Snacks, title: "Cheese Sticks", prise: "$10", productImage: "cheeseSticks"),
+        Product(type: .Snacks, title: "Chicken Legs", prise: "$7", productImage: "chickenLegs"),
+        Product(type: .Snacks, title: "Chicken Strips", prise: "$8", productImage: "chickenStrips"),
+        Product(type: .Snacks, title: "French Fries", prise: "$5", productImage: "frenchFries"),
+        Product(type: .Snacks, title: "Potatoes With Bacon", prise: "$10", productImage: "potatoesWithBacon"),
+        Product(type: .Snacks, title: "Onion Rings", prise: "$5", productImage: "onionRings")
     ]
     
     // Filter Products ..
@@ -46,6 +51,7 @@ class HomeViewModel: ObservableObject {
     // Search Data..
     @Published var searchText: String = ""
     @Published var searchActivated: Bool = false
+    @Published var searchedProducts: [Product]?
     
     init() {
         filterProductByType()
@@ -66,6 +72,26 @@ class HomeViewModel: ObservableObject {
                 .prefix(6)
             DispatchQueue.main.async {
                 self.filteredProducts = results.compactMap({ product in
+                    return product
+                })
+            }
+        }
+    }
+    
+    func filterProductBySearch() {
+        
+        // Filtering Product By Product Type..
+        
+        DispatchQueue.global(qos: .userInteractive).async {
+            let results = self.products
+                // Since it will require more memory so were using lazy to perform more ..
+                .lazy
+                .filter { product in
+                    return product.title.lowercased().contains(self.searchText.lowercased())
+                }
+    
+            DispatchQueue.main.async {
+                self.searchedProducts = results.compactMap({ product in
                     return product
                 })
             }

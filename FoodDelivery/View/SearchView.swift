@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SearchView: View {
     var animation: Namespace.ID
+   
     @EnvironmentObject var homeData: HomeViewModel
     
     // Activating Text Field with the help of FocusState..
@@ -52,8 +53,53 @@ struct SearchView: View {
             }
             .padding([.horizontal])
             .padding(.top)
+            .padding(.bottom, 10)
             
-            // Filter Results..
+            // Showing Progress if searching..
+            // else showing no results found if empty..
+            if let products = homeData.searchedProducts {
+                
+                if products.isEmpty {
+                    
+                    // No Results Found ..
+                    VStack(spacing: 10) {
+                        Text("Item Not Found")
+                            .font(.custom(customFontRegular, size: 22).bold())
+                        
+                        Text("Try a more generic search term ot try looking for alternative products.")
+                            .font(.custom(customFontRegular, size: 16).bold())
+                            .foregroundColor(.gray)
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal, 30)
+                    }
+                    .padding()
+                }
+                else {
+                    // Filter Results..
+                    ScrollView(.vertical,showsIndicators: false) {
+                        
+                        VStack(spacing: 0) {
+                            // Found Text..
+                            Text("Found \(homeData.products.count) results")
+                                .font(.custom(customFontRegular, size: 24).bold())
+                                .padding(.vertical)
+                            
+                            // Staggered grid
+                            StaggeredGrid(columns: 2, spacing: 2, list: homeData.products) { product in
+                                
+                                // Card View..
+                                ProductCardView(product: product)
+                            }
+                        }
+                        .padding(-2)
+                    }
+                }
+            }
+            else  {
+                ProgressView()
+                    .padding(.top, 30)
+                    .opacity(homeData.searchText == "" ? 0 : 1)
+            }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .background(
@@ -66,6 +112,35 @@ struct SearchView: View {
                 startTF = true
             }
         }
+    }
+    
+    @ViewBuilder
+    func ProductCardView(product: Product) -> some View {
+        VStack(spacing: 10) {
+            Image(product.productImage)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: getRect().width / 2.5, height: getRect().width / 2.5)
+        
+            Text(product.title)
+                .font(.custom(customFontRegular, size: 18))
+                .fontWeight(.semibold)
+                .padding(.top, 5)
+            
+            Text(product.prise)
+                .font(.custom(customFontRegular, size: 16))
+                .fontWeight(.bold)
+                .foregroundColor(Color("LoginCircle"))
+                .padding(.top, 5)
+        }
+        .padding(.horizontal, 20)
+        .padding(.bottom, 22)
+        .background(
+        
+            Color.white
+                .cornerRadius(25)
+        )
+        .padding(.top, 15)
     }
 }
 

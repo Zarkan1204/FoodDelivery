@@ -24,5 +24,5 @@ enum ProductType: String, CaseIterable {
     case Sushi = "Sushi"
     case Pizza = "Pizza"
     case Burgers = "Burgers"
-    case Pasta = "Pasta"
+    case Snacks = "Snacks"
 }
