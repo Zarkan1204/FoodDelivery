@@ -24,6 +24,7 @@ struct SearchView: View {
                     withAnimation{
                         homeData.searchActivated = false
                     }
+                    homeData.searchText = ""
                 } label: {
                     Image(systemName: "arrow.left")
                         .font(.title2)
@@ -80,12 +81,12 @@ struct SearchView: View {
                         
                         VStack(spacing: 0) {
                             // Found Text..
-                            Text("Found \(homeData.products.count) results")
+                            Text("Found \(products.count) results")
                                 .font(.custom(customFontRegular, size: 24).bold())
                                 .padding(.vertical)
                             
                             // Staggered grid
-                            StaggeredGrid(columns: 2, spacing: 2, list: homeData.products) { product in
+                            StaggeredGrid(columns: 2, spacing: 2, list: products) { product in
                                 
                                 // Card View..
                                 ProductCardView(product: product)

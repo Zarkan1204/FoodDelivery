@@ -6,6 +6,10 @@
 //
 
 import SwiftUI
+import Combine
+// Using Combine to monitor search field anf if  user leaves for 0.5 secs then starts searching..
+// to avoid memory issue ..
+
 
 class HomeViewModel: ObservableObject {
    
@@ -53,8 +57,21 @@ class HomeViewModel: ObservableObject {
     @Published var searchActivated: Bool = false
     @Published var searchedProducts: [Product]?
     
+    var searchCancellable: AnyCancellable?
+    
     init() {
         filterProductByType()
+        
+        searchCancellable = $searchText.removeDuplicates()
+            .debounce(for: 0.5, scheduler: RunLoop.main)
+            .sink(receiveValue: { str in
+                if str != "" {
+                    self.filterProductBySearch()
+                }
+                else {
+                    self.searchedProducts = nil
+                }
+            })
     }
     
     func filterProductByType() {
