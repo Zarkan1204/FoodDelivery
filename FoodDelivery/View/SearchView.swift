@@ -9,6 +9,9 @@ import SwiftUI
 
 struct SearchView: View {
     var animation: Namespace.ID
+    
+    // Shared Data ..
+    @EnvironmentObject var sharedData: SharedDataModel
    
     @EnvironmentObject var homeData: HomeViewModel
     
@@ -25,6 +28,8 @@ struct SearchView: View {
                         homeData.searchActivated = false
                     }
                     homeData.searchText = ""
+                    // Resetting ..
+                    sharedData.fromSearchPage = false
                 } label: {
                     Image(systemName: "arrow.left")
                         .font(.title2)
@@ -118,9 +123,21 @@ struct SearchView: View {
     @ViewBuilder
     func ProductCardView(product: Product) -> some View {
         VStack(spacing: 10) {
-            Image(product.productImage)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
+            ZStack {
+                
+                if sharedData.showDetailProduct {
+                    Image(product.productImage)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .opacity(0)
+                }
+                else {
+                    Image(product.productImage)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .matchedGeometryEffect(id: "\(product.id)SEARCH", in: animation)
+                }
+            }
                 .frame(width: getRect().width / 2.5, height: getRect().width / 2.5)
         
             Text(product.title)
@@ -142,6 +159,13 @@ struct SearchView: View {
                 .cornerRadius(25)
         )
         .padding(.top, 15)
+        .onTapGesture {
+            withAnimation(.easeInOut) {
+                sharedData.fromSearchPage = true
+                sharedData.detailProduct = product
+                sharedData.showDetailProduct = true
+            }
+        }
     }
 }
 
