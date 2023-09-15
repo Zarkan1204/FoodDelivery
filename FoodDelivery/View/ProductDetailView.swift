@@ -17,6 +17,8 @@ struct ProductDetailView: View {
     // Shared Data Model..
     @EnvironmentObject var sharedData: SharedDataModel
     
+    @EnvironmentObject var homeData: HomeViewModel
+    
     var body: some View {
         VStack {
             
@@ -38,7 +40,7 @@ struct ProductDetailView: View {
                     Spacer()
                     
                     Button {
-                        //
+                        addToLiked()
                     } label: {
                         Image(systemName: "heart.fill")
                             .renderingMode(.template)
@@ -101,7 +103,7 @@ struct ProductDetailView: View {
                     .padding(.vertical, 20)
                     
                     Button {
-                        //
+                        addToCart()
                     } label: {
                         Text("add to basket")
                             .font(.custom(customFontRegular, size: 20).bold())
@@ -125,7 +127,37 @@ struct ProductDetailView: View {
             .ignoresSafeArea()
             .zIndex(0)
         }
+        .animation(.easeInOut, value: sharedData.likedProducts)
+        .animation(.easeInOut, value: sharedData.cartProducts)
         .background(Color.white.ignoresSafeArea())
+    }
+    
+    func addToLiked() {
+        
+        if let index = sharedData.likedProducts.firstIndex(where: { product in
+            return self.product.id == product.id
+        }) {
+            // Remove from liked ..
+            sharedData.likedProducts.remove(at: index)
+        }
+        else {
+            // add to liked ..
+            sharedData.likedProducts.append(product)
+        }
+    }
+    
+    func addToCart() {
+        
+        if let index = sharedData.cartProducts.firstIndex(where: { product in
+            return self.product.id == product.id
+        }) {
+            // Remove from liked ..
+            sharedData.cartProducts.remove(at: index)
+        }
+        else {
+            // add to liked ..
+            sharedData.cartProducts.append(product)
+        }
     }
 }
 

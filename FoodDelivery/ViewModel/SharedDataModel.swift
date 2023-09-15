@@ -16,4 +16,10 @@ class SharedDataModel: ObservableObject {
     
     // matched Geometry effect from search page ..
     @Published var fromSearchPage: Bool = false
+    
+    //Liked products ..
+    @Published var likedProducts: [Product] = []
+    
+    //Basket products ..
+    @Published var cartProducts: [Product] = []
 }
