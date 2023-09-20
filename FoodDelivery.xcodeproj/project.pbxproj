@@ -17,6 +17,7 @@
 		FA7D91ED2A719C840034DAB6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7D91EC2A719C840034DAB6 /* ContentView.swift */; };
 		FA7D91EF2A719C880034DAB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA7D91EE2A719C880034DAB6 /* Assets.xcassets */; };
 		FA7D91F22A719C880034DAB6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA7D91F12A719C880034DAB6 /* Preview Assets.xcassets */; };
+		FA81F6152ABB10EB0098285B /* LikedPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA81F6142ABB10EB0098285B /* LikedPage.swift */; };
 		FA96148F2A729CBD00EF4609 /* OnBoardigPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA96148E2A729CBD00EF4609 /* OnBoardigPage.swift */; };
 		FA9614932A72A07F00EF4609 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA9614912A72A07E00EF4609 /* Roboto-Medium.ttf */; };
 		FA9614942A72A07F00EF4609 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA9614922A72A07F00EF4609 /* Roboto-Bold.ttf */; };
@@ -41,6 +42,7 @@
 		FA7D91EC2A719C840034DAB6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FA7D91EE2A719C880034DAB6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA7D91F12A719C880034DAB6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		FA81F6142ABB10EB0098285B /* LikedPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedPage.swift; sourceTree = "<group>"; };
 		FA96148E2A729CBD00EF4609 /* OnBoardigPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardigPage.swift; sourceTree = "<group>"; };
 		FA9614912A72A07E00EF4609 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		FA9614922A72A07F00EF4609 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 			children = (
 				FA9614A02A7BC9A000EF4609 /* Home.swift */,
 				FA75277E2AA208AE00BE34AF /* ProfilePage.swift */,
+				FA81F6142ABB10EB0098285B /* LikedPage.swift */,
 			);
 			path = TabViews;
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 				FA75277B2A9763BB00BE34AF /* SearchView.swift in Sources */,
 				FA9614A62A822EA200EF4609 /* HomeViewModel.swift in Sources */,
 				FA96149A2A77DD9C00EF4609 /* LoginPageModel.swift in Sources */,
+				FA81F6152ABB10EB0098285B /* LikedPage.swift in Sources */,
 				FA96148F2A729CBD00EF4609 /* OnBoardigPage.swift in Sources */,
 				FA7D91ED2A719C840034DAB6 /* ContentView.swift in Sources */,
 				FA75277F2AA208AE00BE34AF /* ProfilePage.swift in Sources */,
