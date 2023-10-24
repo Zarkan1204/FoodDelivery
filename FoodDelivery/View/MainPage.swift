@@ -33,7 +33,8 @@ struct MainPage: View {
                     .tag(Tab.Liked)
                 ProfilePage()
                     .tag(Tab.Profile)
-                Text("Cart")
+                CartPage()
+                    .environmentObject(sharedData)
                     .tag(Tab.Cart)
             }
             //Custom TabBar..

@@ -83,7 +83,7 @@ struct CartPage: View {
                             VStack(spacing: 15) {
                                 
                                 // For Designing ..
-                                ForEach(sharedData.cartProducts) { product in
+                                ForEach($sharedData.cartProducts) { $product in
                                     
                                     HStack(spacing: 0) {
                                         
@@ -100,7 +100,7 @@ struct CartPage: View {
 
                                         }
                                         
-                                        CardView(product: product)
+                                        CardView(product: $product)
                                     }
                                 }
                             }
@@ -121,7 +121,7 @@ struct CartPage: View {
                             
                             Spacer()
                             
-                            Text("$235")
+                            Text(sharedData.getTotalPrice())
                                 .font(.custom(customFontRegular, size: 18).bold())
                                 .foregroundColor(Color("LoginCircle"))
                         }
@@ -138,9 +138,9 @@ struct CartPage: View {
                                 .cornerRadius(15)
                                 .shadow(color: Color.black.opacity(0.05), radius: 5, x: 5, y: 5)
                         }
-                        .padding(.horizontal, 25)
                         .padding(.vertical)
                     }
+                    .padding(.horizontal, 25)
                 }
             }
             .navigationBarHidden(true)
@@ -150,37 +150,6 @@ struct CartPage: View {
                 .ignoresSafeArea()
             )
         }
-    }
-   
-    @ViewBuilder
-    func CardView(product: Product) -> some View {
-        
-        HStack(spacing: 15) {
-            
-            Image(product.productImage)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 100, height: 100)
-            
-            VStack(alignment: .leading, spacing: 8) {
-                
-                Text(product.title)
-                    .font(.custom(customFontRegular, size: 18).bold())
-                    .lineLimit(1)
-                
-                Text("Type: \(product.type.rawValue)")
-                    .font(.custom(customFontRegular, size: 13))
-                    .foregroundColor(.gray)
-            }
-        }
-        .padding(.horizontal)
-        .padding(.vertical, 10)
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .background(
-        
-            Color.white
-                .cornerRadius(10)
-        )
     }
     
     func deleteProduct(product: Product) {
@@ -199,5 +168,69 @@ struct CartPage: View {
 struct CartPage_Previews: PreviewProvider {
     static var previews: some View {
         CartPage()
+    }
+}
+
+struct CardView: View {
+    
+    @Binding var product: Product
+    
+    var body: some View {
+        
+        HStack(spacing: 15) {
+            
+            Image(product.productImage)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 100, height: 100)
+            
+            VStack(alignment: .leading, spacing: 8) {
+                
+                Text(product.title)
+                    .font(.custom(customFontRegular, size: 18).bold())
+                    .lineLimit(1)
+                
+                //Quantity Buttons..
+                HStack(spacing: 10) {
+                    Text("Quantity")
+                        .font(.custom(customFontRegular, size: 14))
+                        .foregroundColor(.gray)
+                    
+                    Button {
+                        product.quantity = (product.quantity > 0 ? (product.quantity - 1) : 0)
+                    } label: {
+                        Image(systemName: "minus")
+                            .font(.caption)
+                            .foregroundColor(.white)
+                            .frame(width: 20, height: 20)
+                            .background(Color("LoginCircle"))
+                    }
+                    
+                    Text("\(product.quantity)")
+                        .font(.custom(customFontRegular, size: 14))
+                        .fontWeight(.semibold)
+                        .foregroundColor(.black)
+                    
+                    Button {
+                        product.quantity += 1
+                    } label: {
+                        Image(systemName: "plus")
+                            .font(.caption)
+                            .foregroundColor(.white)
+                            .frame(width: 20, height: 20)
+                            .background(Color("LoginCircle"))
+                    }
+                    
+                }
+            }
+        }
+        .padding(.horizontal)
+        .padding(.vertical, 10)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(
+        
+            Color.white
+                .cornerRadius(10)
+        )
     }
 }
