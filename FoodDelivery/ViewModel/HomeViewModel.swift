@@ -21,8 +21,8 @@ class HomeViewModel: ObservableObject {
         Product(type: .Sushi, title: "California", prise: "$10", productImage: "california"),
         Product(type: .Sushi, title: "Kaecy maki", prise: "$12", productImage: "kaecy"),
         Product(type: .Sushi, title: "Ugor roll", prise: "$10", productImage: "ugor"),
-        Product(type: .Sushi, title: "qqqq", prise: "$10", productImage: "sushi1"),
-        Product(type: .Sushi, title: "sdcsdcsd", prise: "$12", productImage: "sushi3"),
+        Product(type: .Sushi, title: "Unagi maki", prise: "$10", productImage: "unagi maki"),
+        Product(type: .Sushi, title: "Unagi tempura", prise: "$12", productImage: "unagi tempura"),
        
         Product(type: .Pizza, title: "Pepperoni", prise: "$10", productImage: "pepperoni"),
         Product(type: .Pizza, title: "Italy", prise: "$13", productImage: "italy"),
