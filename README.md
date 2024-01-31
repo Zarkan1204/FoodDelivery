@@ -1,6 +1,4 @@
 # FoodDelivery
-![][ios] ![][swiftUI] ![][Combine] 
-
 ### Technologies Stack:
 * SDK version - Swift 5
 * Minimum iOS target - iOS 16.4
